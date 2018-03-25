@@ -12,11 +12,7 @@ PImage start2IMG;
 PImage end1Img;
 PImage end2Img;
 PImage hpImg ;
-PImage enemyImg1 ;
-PImage enemyImg2 ;
-PImage enemyImg3 ;
-PImage enemyImg4 ;
-PImage enemyImg5 ;
+PImage enemyImg ;
 PImage treasureImg ;
 int enemyX,enemyY;
 int backgroundX,backgroundY,backgroundZ;
@@ -43,11 +39,8 @@ void setup () {
   start1IMG=loadImage("img/start1.png");
   start2IMG=loadImage("img/start2.png");
   hpImg=loadImage("img/hp.png");
-  enemyImg1=loadImage("img/enemy.png");
-  enemyImg2=loadImage("img/enemy.png");
-  enemyImg3=loadImage("img/enemy.png");
-  enemyImg4=loadImage("img/enemy.png");
-  enemyImg5=loadImage("img/enemy.png");  treasureImg=loadImage("img/treasure.png");
+  enemyImg=loadImage("img/enemy.png");
+  treasureImg=loadImage("img/treasure.png");
   fighterImg=loadImage("img/fighter.png");
   
   speedX = floor(random(2,8));
@@ -84,24 +77,9 @@ void draw() {
   rectMode(CORNERS);
   rect(30,20,blood,40);
   image(hpImg,hpX,hpY);
+  image(enemyImg,enemyX,enemyY);
   image(treasureImg,x,y);
   image(fighterImg,fighterX-20,fighterY-20);
-  
- while(x < 3){
-   int x = 0;
-  if(x == 1){image(enemyImg1,enemyX,enemyY);
-  image(enemyImg2,enemyX+65,enemyY);
-  image(enemyImg3,enemyX+130,enemyY);
-  image(enemyImg4,enemyX-65,enemyY);
-  image(enemyImg5,enemyX-130,enemyY);
-    }
-  image(enemyImg1,enemyX,enemyY);
-  image(enemyImg2,enemyX+65,enemyY+45);
-  image(enemyImg3,enemyX+130,enemyY+90);
-  image(enemyImg4,enemyX-65,enemyY-45);
-  image(enemyImg5,enemyX-130,enemyY-90);
-  }
-  
   if(x+40>=fighterX&&fighterX+40>=x){
     if(y+40>=fighterY&&fighterY+40>=y){
     x=floor(random(20,620));
@@ -109,7 +87,7 @@ void draw() {
     blood+=19.5;
     }
   }
-       if(enemyX+170>=fighterX&&fighterX+170>=enemyX){
+       if(enemyX+40>=fighterX&&fighterX+40>=enemyX){
        if(enemyY+40>=fighterY&&fighterY+40>=enemyY){
        speedX=floor(random(2,8));
        speedY=floor(random(-2,2));
